@@ -1,0 +1,23 @@
+.logoCarrito {
+    max-width: 8%;
+    max-height: 8%;
+    min-width: 100px;
+    min-height: 50px;
+    position: absolute;
+    right: 60px;
+    top: 20px;
+}
+
+.NumeroCarrito {
+    font-size: 20px;
+    background-color: red;
+    height: 25px;
+    width: 25px;
+    border-radius: 999px;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    right: 55px;
+    top: 30px;
+}

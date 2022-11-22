@@ -1,0 +1,42 @@
+.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 210px;
+    height: 60px;
+    align-items: center;
+}
+
+.increment {
+    width: 40px;
+    height: 40px;
+}
+
+.decrement {
+    width: 40px;
+    height: 40px;
+}
+
+.counterNumber {
+    width: 120px;
+    text-align: center;
+    align-items: center;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.counterGeneral{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agregarCarrito {
+    margin-top: 10px;
+}
+
+.in{
+    margin: 0;
+    padding: 0;
+}
