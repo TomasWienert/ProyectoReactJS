@@ -12,7 +12,8 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer/>
+      <ItemListContainer greeting="Bienvenido a la página e-comerce del bazar Marcelo, la página se encuentra en fabricación,
+            proximamente encontrará nuestros productos..."/>
       <ItemCount/>
     </div>
   );

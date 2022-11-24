@@ -1,9 +1,8 @@
 import React from "react";
 
-function ItemListContainer () {
+function ItemListContainer (props) {
     return (
-        <h1>Bienvenido a la página e-comerce del bazar Marcelo, la página se encuentra en fabricación,
-            proximamente encontrará nuestros productos...</h1>
+        <h1>{props.greeting}</h1>
     );
 }
 
