@@ -17,7 +17,7 @@ function NavBar() {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll>
-            <Nav.Link href="#action1">HOME</Nav.Link>
+            <Nav.Link href="/">HOME</Nav.Link>
             <Nav.Link href="#action2">VAJILLA TSUJI</Nav.Link>
             <Nav.Link href="#action3">VAJILLA VERBANO</Nav.Link>
           </Nav>
