@@ -4,24 +4,24 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import "./Item.css";
 
-export default function Item ({info}) {
+
+export default function Item ({data}) {
   return (
-    <Card sx={{ maxWidth: 345, margin: 3 }}>
+    <Card sx={{ maxWidth: 350, margin: 2 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="250"
-          image={info.avatar_url}
+          image={data.avatar_url}
           alt="product image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {info.login}
+            {data.login}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            {info.type}
+            {data.type}
           </Typography>
         </CardContent>
       </CardActionArea>

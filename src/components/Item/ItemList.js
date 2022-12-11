@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import Item from "./Item"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import "./ItemList.css";
 
 const ItemList = () => {
 
@@ -29,7 +31,9 @@ const ItemList = () => {
                 {users.map((user) => {
                     return (
                     <Col md={4} key={user.id}>
-                        <Item info = {user} />
+                        <Link to = {`/detail/${user.id}`} className="cardText">
+                            <Item data = {user} />
+                        </Link>
                     </Col>
                 )})} 
             </Row>
