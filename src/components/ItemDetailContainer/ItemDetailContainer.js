@@ -5,7 +5,9 @@ const ItemDetailContainer = () => {
     const [user, setUser] = useState ([]);
 
     const getDetail = async (id) => {
-        fetch(`https://api.github.com/users/${id}`)
+        /* aca la idea es traer de la api solamente el id que selecciono en ItemDetailContainer */
+        /* No se como traer ese numero de id */
+        fetch(`https://api.github.com/users/${id}`)  
         .then(res => res.json())
         .then(obj => setUser(obj))
     };
