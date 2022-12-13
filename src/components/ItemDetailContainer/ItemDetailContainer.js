@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
-    const [user, setUser] = useState ([]);
+    const [user, setUser] = useState ("");
 
     const getDetail = async (id) => {
         /* aca la idea es traer de la api solamente el id que selecciono en ItemDetailContainer */
@@ -15,10 +15,10 @@ const ItemDetailContainer = () => {
     useEffect (() => {
 
         setTimeout(() => {
-            getDetail(id);
+            getDetail(/* id */);
         }, 2000)
         
-    }, [id]);
+    }, [/* id */]);
 
         
     return (
