@@ -9,20 +9,21 @@ const ItemDetail = ({data}) => {
 
     return (
         <div>
-        <Container fluid className="ItemDetail">
+        <Container fluid className="ItemDetailText">
             <Row>
-                <h1>{data.nombre} {data.marca}</h1>
+                <h1 className="DetailTitle">{data.nombre} {data.marca}</h1>
             </Row>
-            <Row>
-                <Col md={5}>
-                    <img src={data.img} alt=""/>
+            <Row className="DetailBlock">
+                <Col md={4} className="DetailContainer">
+                    <img src={data.img} className="img-fluid" alt=""/>
+                    <p className="pt-4 DetailPrice"><strong>Precio unitario: ${data.precio}</strong></p>
                 </Col>
-                <Col md={7}>
-                    <p>{data.descripcion}</p>    
+                <Col md={8}>
+                    <p className="DetailText">{data.descripcion}</p>    
                 </Col>
             </Row>
         </Container>
-        <ItemCount/>
+        <ItemCount data = {data}/>
         </div>
     );
 }

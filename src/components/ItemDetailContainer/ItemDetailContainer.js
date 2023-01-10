@@ -1,28 +1,32 @@
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import React, {useState, useEffect} from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = () => {
-    const [user, setUser] = useState ("");
+/* traigo los parametros del id que seleccione */
 
-    const getDetail = async (id) => {
-        /* aca la idea es traer de la api solamente el id que selecciono en ItemDetailContainer */
-        /* No se como traer ese numero de id */
-        fetch(`https://api.github.com/users/${id}`)  
-        .then(res => res.json())
-        .then(obj => setUser(obj))
-    };
+import {useParams} from "react-router-dom";
+
+const ItemDetailContainer = () => {
+    const [item, setItem] = useState ("");
+
+    /* traigo el id como parametro y lo desestructuro para que solo me devuelva el numero y usarlo */
+
+    const {id} = useParams();
 
     useEffect (() => {
 
-        setTimeout(() => {
-            getDetail(/* id */);
-        }, 2000)
+        const db = getFirestore();
+        const itemRef = doc(db, "products", id);
+        getDoc(itemRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                setItem({id: snapshot.id, ...snapshot.data() });
+            }
+        });
         
-    }, [/* id */]);
-
-        
+    }, [id]);
+         
     return (
-        <ItemDetail data = {user} key = {user.id} />   
+        <ItemDetail data = {item} key = {item.id} />   
     );
 };
 

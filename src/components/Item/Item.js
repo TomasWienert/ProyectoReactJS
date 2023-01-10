@@ -13,15 +13,15 @@ export default function Item ({data}) {
         <CardMedia
           component="img"
           height="250"
-          image={data.avatar_url}
+          image={data.img}
           alt="product image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {data.login}
+            {data.nombre} {data.marca}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            {data.type}
+            $ {data.precio}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './ItemCount.css';
 import Button from 'react-bootstrap/Button';
 
-const ItemCount = () => {
+const ItemCount = ({data}) => {
     
     const [counter, setCounter] = useState(0);
 
@@ -18,14 +18,10 @@ const ItemCount = () => {
         }
     }
     
-    /* Pongo un valor de stock inicial ahora para hacer el ejercicio */
-
-    const stock = 5;
-
     /* determino si hay stock suficiente para comprar producto */
 
     const agregar = () => {
-        if (counter > stock) {
+        if (counter > data.stock) {
             alert("Stock insuficiente")
         }else{
             console.log(counter)
@@ -44,7 +40,7 @@ const ItemCount = () => {
                 <Button variant="danger" onClick= {decrementCounter} className="increment">-</Button>
                 <div className="counterNumber">
                     <p className="in">Cantidad: {counter}</p>
-                    <p className="in">Stock: {stock}</p>
+                    <p className="in">Stock: {data.stock}</p>
                 </div>    
                 <Button variant="success" onClick={incrementCounter} className="decrement">+</Button>
             </div>
