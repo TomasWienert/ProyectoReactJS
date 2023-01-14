@@ -1,26 +1,29 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import "./UserForm.css";
 
-function UserForm() {
+const UserForm = () => {
+
   return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+    <Form className='form'>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Escriba su nombre</Form.Label>
+        <Form.Control type="email" placeholder="Ingrese su nombre" />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+          Lo necesitaremos para entregarle correctamente el pedido.
         </Form.Text>
       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Teléfono</Form.Label>
+        <Form.Control type="phone" placeholder="coloque su telefono, ej para BS AS (1145080365)" />
+        <Form.Label>E-mail</Form.Label>
+        <Form.Control type="email" placeholder="Ingrese su mail" />
+        <Form.Text className="text-muted">
+          No compartiremos sus datos, solo se usarán para procesar la compra.
+        </Form.Text>
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        Finalizar compra
       </Button>
     </Form>
   );

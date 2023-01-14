@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
+import UserForm from "./components/Cart/UserForm";
 
 /* CONTEXT */
 
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/category/:marca" element={<ItemListContainer/>} />
           <Route exact path = "/detail/:id" element = {<ItemDetailContainer />} />
           <Route exact path = "/cart" element = {<Cart />} />
+          <Route exact path = "/finalizar-compra" element = {<UserForm />} />
         </Routes>   
       </CartProvider>
     </BrowserRouter>  

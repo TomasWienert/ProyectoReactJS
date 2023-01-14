@@ -24,7 +24,7 @@ function ItemListContainer () {
         });
     }
 
-    const loadFilter = (marca) => {
+    const loadFilter = () => {
         const db = getFirestore();
 
         const itemsCollection = collection (db, "products");

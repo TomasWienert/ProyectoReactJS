@@ -1,24 +1,22 @@
-import React from "react"
+import React, {useContext} from "react"
 import logoCarrito from '../../images/carrito.png';
 import './CartWidget.css';
 import {Link} from "react-router-dom";
-import Cart from "../Cart/Cart"
 
-function CartWidget () {
+import { CartContext } from "../../context/CartContext";
 
-    let NumeroCarrito = 3;
+const CartWidget = () => {
 
-    let NumeroMostrado = "";
+    const {totalProducts} = useContext(CartContext);
 
-    if (NumeroCarrito !== 0) {
-        NumeroMostrado = NumeroCarrito;
-
+    if (totalProducts() !== 0) {
+        
         return (
             <div>
                 <Link to = {`/cart`}>
                     <img src={logoCarrito} alt="logocarrito" id="" className="logoCarrito"></img>
                 </Link>
-                <h2 className="NumeroCarrito">{NumeroMostrado}</h2> 
+                <h2 className="NumeroCarrito">{totalProducts()}</h2> 
             </div>  
         )
 
@@ -26,9 +24,9 @@ function CartWidget () {
 
         return (
             
-            <a href ="/">
+            <Link to = {`/cart`}>
                 <img src={logoCarrito} alt="logocarrito" id="" className="logoCarrito"></img>
-            </a>
+            </Link>
                        
         );
 

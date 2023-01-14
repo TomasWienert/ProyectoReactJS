@@ -1,16 +1,26 @@
 import React, {useState} from "react";
 
-const CartContext = React.createContext();
+const CartContext = React.createContext([]);
 
 const CartProvider = ({children}) => {
 
     const [cartInfo, setCartInfo] = useState ([]);
 
+    /* FUNCION PARA AGREGAR PRODUCTOS AL ARRAY */
+
+    const addProduct = (item, quantity) => {
+        if (prodInCart(item.id)) {
+            setCartInfo(cartInfo.map(product => {
+                return product.id === item.id ? { ...product, quantity: product.quantity + quantity} : product
+            }));
+        } else {
+            setCartInfo ([...cartInfo, { ...item, quantity }]);
+        };
+    };
+
     /* LIMPIADOR DE CARRITO A FUNCIONAR CON BOTON DE LIMPIAR */
 
-    const clearCart = () => {
-        setCartInfo = ([]);
-    }
+    const clearCart = () => setCartInfo([]);
 
     /* FUNCION PARA DECIDIR SI EL PRODUCTO YA ESTA EN EL ARRAY */
 
@@ -24,25 +34,31 @@ const CartProvider = ({children}) => {
         setCartInfo (cartInfo.filter(product => product.id !== id));
     }
 
-    /* FUNCION PARA AGREGAR PRODUCTOS AL ARRAY */
+    /* PARA CALCULAR LA CANTIDAD TOTAL DE PRODUCTOS EN EL CARRITO */
 
-    const addProduct = (item, cantidad) => {
-        if (prodInCart(item.id)) {
-            setCartInfo(cartInfo.map(product => {
-                return product.id === item.id ? { ...product, cantidad: product.cantidad + cantidad} : product
-            }));
-        } else {
-            setCartInfo ([...cartInfo, { ...item, cantidad }]);
-        };
-    };
+    const totalProducts = () => {
+        return cartInfo.reduce((cantProd, prodActual) => cantProd + prodActual.quantity, 0);
+    }
 
-    return <CartContext.Provider value = {{
+    /* CALCULO EL PRECIO TOTAL EN CARRITO */
+
+    const totalPrice = () => {
+        return cartInfo.reduce((previous, current) => previous + current.quantity * current.precio, 0);
+    }
+
+    return (
+    <CartContext.Provider value = {{
         cartInfo, 
         setCartInfo, 
         clearCart, 
         prodInCart, 
         removeProduct, 
-        addProduct}}>{children}</CartContext.Provider>
-};
+        addProduct,
+        totalProducts,
+        totalPrice,
+        }}>
+            {children}
+    </CartContext.Provider>
+)};
 
 export {CartProvider, CartContext};
