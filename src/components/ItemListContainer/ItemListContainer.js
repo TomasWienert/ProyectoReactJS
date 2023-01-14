@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "../Item/ItemList";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where} from "firebase/firestore";
+
+import {useParams} from "react-router-dom";
 
 function ItemListContainer () {
 
+    const {marca} = useParams();
+
     const [products, setProducts] = useState ([]);
 
-    const loadApi = async () => {
+    const loadAll = () => {
         const db = getFirestore();
 
         const itemsCollection = collection (db, "products");
@@ -19,15 +23,35 @@ function ItemListContainer () {
             setProducts(products);
         });
     }
+
+    const loadFilter = (marca) => {
+        const db = getFirestore();
+
+        const itemsCollection = collection (db, "products");
+
+        const q = query(itemsCollection, where ("marca", "==", marca));
+
+        getDocs(q).then((snapshot) => {
+            setProducts(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            })));
+        });
+    }
     
     useEffect(() => {
                 
         setTimeout(() => {
-            loadApi();
+
+            if (marca) {
+                loadFilter();
+            }else{
+                loadAll();
+            }
+            
         }, 2000)
         
-    } , [])
-
+    } , [marca])
 
     return (
         <div>

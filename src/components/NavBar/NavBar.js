@@ -3,9 +3,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartWidget from '../CartWidget/CartWidget';
 import logobazar from '../../images/logobazar.png'; 
+import {Link} from "react-router-dom";
 import "./NavBar.css";
 
 function NavBar() {
+
   return (
     <div>
     <Navbar bg="light" expand="lg">
@@ -18,8 +20,8 @@ function NavBar() {
             style={{ maxHeight: '100px' }}
             navbarScroll>
             <Nav.Link href="/">HOME</Nav.Link>
-            <Nav.Link href="#action2">VAJILLA TSUJI</Nav.Link>
-            <Nav.Link href="#action3">VAJILLA VERBANO</Nav.Link>
+            <Link to = {`/category/Tsuji`} className="NavText">VAJILLA TSUJI</Link>
+            <Link to = {`/category/Verbano`} className="NavText">VAJILLA VERBANO</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
