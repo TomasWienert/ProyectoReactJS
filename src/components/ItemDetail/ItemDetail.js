@@ -24,15 +24,16 @@ const ItemDetail = ({data}) => {
             alert("Seleccione una cantidad del producto")
         }else{
             alert("Agregó " + quantity + " unidades al carrito")
+            
+            /* mando producto al carrito */
+
+            addProduct(data, quantity)
+
+            /* uso la formula para ir al carrito o continuar la compra */
+
+            setGoCart(true);
         }
 
-        /* uso la formula para ir al carrito o continuar la compra */
-
-        setGoCart(true);
-
-        /* mando producto al carrito */
-
-        addProduct(data, quantity)
     }
 
     return (
