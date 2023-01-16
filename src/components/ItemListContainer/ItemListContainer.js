@@ -24,7 +24,8 @@ function ItemListContainer () {
         });
     }
 
-    const loadFilter = () => {
+    const loadFilter = (marca) => {
+
         const db = getFirestore();
 
         const itemsCollection = collection (db, "products");
@@ -44,7 +45,7 @@ function ItemListContainer () {
         setTimeout(() => {
 
             if (marca) {
-                loadFilter();
+                loadFilter(marca);
             }else{
                 loadAll();
             }
