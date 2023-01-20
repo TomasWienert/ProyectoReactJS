@@ -3,3 +3,15 @@
     margin-right: 25px;
     margin-top: 25px;
 }
+
+.finalContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.finalText {
+    color: rgb(90, 56, 56);
+    font-size: 25px;
+}

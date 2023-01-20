@@ -5,6 +5,7 @@ import './ItemDetailStyle.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import { CartContext } from "../../context/CartContext"
 
@@ -53,9 +54,9 @@ const ItemDetail = ({data}) => {
             </Row>
         </Container>
         {goCart ?
-        <div>
-            <Link to = {`/`}><button>Seguir comprando</button></Link>
-            <Link to = {`/cart`}><button>Ir al carrito</button></Link>
+        <div className="detailButtonContainer">
+            <Link to = {`/`}><Button variant="dark" className="detailButton">Seguir comprando</Button></Link>
+            <Link to = {`/cart`}><Button variant="dark">Ir al carrito</Button></Link>
         </div> : <ItemCount data = {data} onAdd = {onAdd} />
 
         }

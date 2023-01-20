@@ -13,9 +13,9 @@ function ItemListContainer () {
     const loadAll = () => {
         const db = getFirestore();
 
-        const itemsCollection = collection (db, "products");
+        const productsCollection = collection (db, "products");
 
-        getDocs(itemsCollection).then((snapshot) => {
+        getDocs(productsCollection).then((snapshot) => {
             const products = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data(),
@@ -28,9 +28,9 @@ function ItemListContainer () {
 
         const db = getFirestore();
 
-        const itemsCollection = collection (db, "products");
+        const productsCollection = collection (db, "products");
 
-        const q = query(itemsCollection, where ("marca", "==", marca));
+        const q = query(productsCollection, where ("marca", "==", marca));
 
         getDocs(q).then((snapshot) => {
             setProducts(snapshot.docs.map((doc) => ({
