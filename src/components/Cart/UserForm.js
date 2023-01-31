@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {getFirestore, collection, addDoc} from "firebase/firestore";
+import { CartContext } from "../../context/CartContext";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./UserForm.css";
 
 const UserForm = () => {
+
+  const {cartInfo, totalPrice} = useContext(CartContext);
 
   const [id, setId] = useState ();
 
@@ -12,7 +15,25 @@ const UserForm = () => {
     name: "",
     phone:"",
     email:"",
+    items: cartInfo.map(product => ({id: product.id, product: product.nombre,
+                                      category: product.marca, price:product.precio,
+                                      quantity:product.quantity})),
+    total: totalPrice(),
+
   });
+
+  /* const [form, setForm] = useState ({
+    buyer: {
+    name: "",
+    phone:"",
+    email:"",
+    },
+    items: cartInfo.map(product => ({id: product.id, product: product.nombre,
+                                      category: product.marca, price:product.precio,
+                                      quantity:product.quantity})),
+    total: totalPrice(),
+
+  }); */
 
   const sendForm = (ev) => {
     ev.preventDefault();
@@ -24,10 +45,11 @@ const UserForm = () => {
     addDoc(buyerCollection, form).then(snapshot => {
       console.log(snapshot.id);
       setForm({
+        buyer: {
         name: "",
         phone:"",
         email:"",
-      });
+    }});
       setId(snapshot.id);
     })
 
@@ -35,8 +57,10 @@ const UserForm = () => {
 
   const cambiaEstado = (ev) => {
     const {value, name} = ev.target
-    setForm({...form,[name]: value})
+    setForm({...form, [name]:value})
   }
+
+  console.log(form)
 
   return (
 
