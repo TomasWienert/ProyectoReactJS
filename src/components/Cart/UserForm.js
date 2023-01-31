@@ -60,8 +60,6 @@ const UserForm = () => {
     setForm({...form, [name]:value})
   }
 
-  console.log(form)
-
   return (
 
     <div>
